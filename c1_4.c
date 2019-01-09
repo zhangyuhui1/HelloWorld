@@ -63,7 +63,7 @@ int main(int argc,char *argv[])
 					index = 0;
 					break;
 				}
-				if((context[i] >= 'a' && context[i] <= 'z') 							|| context[i] =='.')
+				if((context[i] >= 'a' && context[i] <= 'z') || context[i] =='.')
 					fileName[tmp++] = context[i];
 			}
 			fileName[tmp] = '\0';
