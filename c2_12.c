@@ -12,42 +12,22 @@ int Min3(int a,int b,int c ) //putout the min number whitin a,b and c
 		return b;
 	else
 		return c;
-}
 
-int MinSubSum(const int a[],int left,int right) //algorith for 2.12(a)
+
+int MinPosSubSum(const int a[],int left,int right) //algorith for 2.12(a)
 {	
-	int MinLeftSum,MinRightSum;
-	int MinLeftBorderSum,MinRightBorderSum;
-	int LeftBorderSum,RightBorderSum;
-	int Center,i;
-	if(left == right) //base case
-		if(a[left] < 0)
-			return a[left];
-		else
-			return 0;
-	Center = (left+right)/2;
-	MinLeftSum = MinSubSum(a,left,Center);
-	MinRightSum = MinSubSum(a,Center+1,right);
-	MinLeftBorderSum = 0;
-	LeftBorderSum = 0;
-	for(i = Center; i >= left; i--){
-		LeftBorderSum += a[i];
-		if(LeftBorderSum < MinLeftBorderSum)
-			MinLeftBorderSum = LeftBorderSum;
-	}
-	
-	MinRightBorderSum = 0;
-	RightBorderSum = 0;
-	for(i = Center+1; i <= right; i++){
-		RightBorderSum += a[i];
-		if(RightBorderSum < MinRightBorderSum)
-			MinRightBorderSum = RightBorderSum;
-	}
-	
-	return Min3(MinLeftSum,MinRightSum,MinLeftBorderSum+MinRightBorderSum);
+	int t[100];
+	int i,j,min;
+	for(i = 0; i <= right; i++){
+		while(a[i] > 0){
+			for(j = 0; a[i+j] > 0; j++)
+				t[j] = a[i+j];
+			min = 
+			
+			
 }
 
-int MinPosSubSum(int a[],int left,int right)
+int MinSubSum(int a[],int left,int right)
 {
 	int MinLeftSum,MinRightSum;
 	int MinLeftBorderSum,MinRightBorderSum;
