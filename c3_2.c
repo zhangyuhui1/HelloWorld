@@ -25,8 +25,10 @@ void PrintLots(List L,List P)
 		for(i = 0; i < P->Element-tem; i++)
 			if(L->Next != NULL)
 				L = L->Next;
-			else
+			else{
+				printf("\n");
 				return;
+			}
 		printf("%3d",L->Element);
 		P = P->Next;
 		tem =tem+i;
