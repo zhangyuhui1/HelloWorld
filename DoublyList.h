@@ -1,5 +1,4 @@
 #include<stdlib.h>
-#include<string.h>
 #include<stdio.h>
 
 #ifndef _DoublyList_H
@@ -10,6 +9,7 @@ typedef PtrToNode List;
 typedef PtrToNode Position;
 typedef int ElementType;
 
+void PrintList(List L);
 List CreateList(int n);
 List MakeEmpty(List L);
 int IsEmpty(List L);
@@ -29,10 +29,9 @@ struct Node
 	ElementType Element;
 	Position Prev;
 	Position Next;
-}
+};
 
-
-
+/*Create a List with n element*/
 List CreateList(int n)
 {
 	List L;
@@ -56,4 +55,15 @@ List CreateList(int n)
 		}
 	}
 	return L;
+}
+
+
+/*Output all element of List*/
+void PrintList(List L)
+{
+	while(L->Next != NULL){
+		L = L->Next;
+		printf("%3d",L->Element);
+	}
+	printf("\n");
 }
