@@ -36,15 +36,6 @@ struct Node
 };
 
 
-/*Output all element of the list*/
-void PrintList(List L)
-{
-	while(L->Next != NULL){
-		L = L->Next;
-		printf("%3d",L->Element);
-	}
-}
-
 /*Create a List with n element*/
 List CreateList(int n)
 {
@@ -91,6 +82,7 @@ void PrintList(List L){
 		L = L->Next;
 		printf("%3d",L->Element);
 	}
+	printf("\n");
 }
 
 
