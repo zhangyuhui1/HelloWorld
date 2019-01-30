@@ -11,6 +11,7 @@ typedef PtrToNode List;
 typedef PtrToNode Position;
 typedef int ElementType;
 
+void PrintList(List L);
 List MakeEmpty(List L);
 List CreateList(int n);
 int IsEmpty(List L);
@@ -34,7 +35,7 @@ struct Node
 	Position Next;
 };
 
-
+/*Create a List with n element*/
 List CreateList(int n)
 {
 	int i;
@@ -71,6 +72,15 @@ int IsEmpty(List L)
 int IsLast(Position P, List L)
 {
 	return P->Next == NULL;
+}
+
+
+/*Output all element of the list*/
+void PrintList(List L){
+	while(L->Next != NULL){
+		L = L->Next;
+		printf("%3d",L->Element);
+	}
 }
 
 
