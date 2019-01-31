@@ -22,10 +22,22 @@ struct Node
 /*Output all element of Polynomial poly*/
 void PrintPolynomial(Polynomial Poly)
 {	
-	if(Poly->Next != NULL){
+	int flag = 0;
+	while(Poly->Next != NULL){
 		Poly = Poly->Next;
-		printf("%dX^%d+",Poly->Coefficient,Poly->Exponent);
+		if(flag == 0)
+			if(Poly->Exponent == 0)
+				printf("%d",Poly->Coefficient);
+			else
+				printf("%dX^%d",Poly->Coefficient,Poly->Exponent);
+		else
+			if(Poly->Exponent == 0)
+				printf("+%d",Poly->Coefficient);
+			else
+				printf("+%dX^%d",Poly->Coefficient,Poly->Exponent);
+		flag = 1;
 	}
+	printf("\n");
 }
 /*Create polynomial with n element*/
 Polynomial CreatePolynomial(int n)
@@ -50,22 +62,24 @@ Polynomial CreatePolynomial(int n)
 	return L;
 }	
 
-
+/*Add up two polynomials*/
 Polynomial AddPolynomial(Polynomial Poly1, Polynomial Poly2)
 {
-	Polynomial PolySum,Tem,P;
+	Polynomial PolySum;
+	PtrToNode Tem,P;
 	P = malloc(sizeof(struct Node));
 	if(P == NULL)
 		printf("Out of space!!!");
+	P->Next = NULL;
 	PolySum = malloc(sizeof(struct Node));
 	if(PolySum == NULL)
 		printf("Out of space!!!");
 	Poly1 = Poly1->Next;
 	Poly2 = Poly2->Next;
-	PolySum->Next = P;
+	PolySum = P;
 	while(Poly1 != NULL || Poly2 != NULL){
 		Tem = malloc(sizeof(struct Node));
-		if(Tem = NULL)
+		if(Tem == NULL)
 			printf("Out of space!!!");
 		if(Poly1 == NULL){
 			Tem->Coefficient = Poly2->Coefficient;
@@ -91,9 +105,11 @@ Polynomial AddPolynomial(Polynomial Poly1, Polynomial Poly2)
 				Poly2 = Poly2->Next;
 			}
 		}
-		P = Tem;
+		Tem->Next = P->Next;
+		P->Next = Tem;
 		P = P->Next;
 	}
 	return PolySum;
 		
 }
+
