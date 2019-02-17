@@ -49,6 +49,7 @@ int JosephusAlogithm(List L,int m, int n)
 {
 	int i;
 	int k = n;
+	m = m%n;
 	Position T,Tem;
 	T = L->Next;
 	while(n > 1){
