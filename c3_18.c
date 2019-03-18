@@ -1,3 +1,4 @@
+typedef char ElementType; 
 #include<stdio.h>
 #include<string.h>
 #include"Stack.h"
